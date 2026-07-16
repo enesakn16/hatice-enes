@@ -4,10 +4,12 @@
   const toast = document.getElementById('toast');
   const app = document.getElementById('app');
   const musicBtn = document.getElementById('musicBtn');
-  const youtubePlayer = document.getElementById('youtubePlayer');
-  const MUSIC_URL = 'https://www.youtube.com/embed/mGUjVbsYG6E?autoplay=1&loop=1&playlist=mGUjVbsYG6E&controls=0&disablekb=1&playsinline=1&modestbranding=1&rel=0';
+  const bgMusic = document.getElementById('bgMusic');
   let musicPlaying = false;
   let step = 0;
+
+  bgMusic.volume = 0.62;
+  bgMusic.load();
 
   function seedStars(){
     const box = document.getElementById('stars');
@@ -31,22 +33,29 @@
     showToast.t=setTimeout(()=>toast.classList.remove('show'),2200);
   }
 
+  function setMusicUI(isPlaying){
+    musicPlaying=isPlaying;
+    musicBtn.classList.toggle('active',isPlaying);
+    musicBtn.textContent=isPlaying?'♫':'♪';
+    musicBtn.setAttribute('aria-label',isPlaying?'Müziği kapat':'Müziği aç');
+  }
+
   function startMusic(showMessage=true){
-    if(musicPlaying) return;
-    youtubePlayer.src=MUSIC_URL;
-    musicPlaying=true;
-    musicBtn.classList.add('active');
-    musicBtn.textContent='♫';
-    musicBtn.setAttribute('aria-label','Müziği kapat');
-    if(showMessage) showToast('No. 1 Party Anthem başladı ♫');
+    const playPromise=bgMusic.play();
+    if(playPromise){
+      playPromise.then(()=>{
+        setMusicUI(true);
+        if(showMessage) showToast('No. 1 Party Anthem başladı ♫');
+      }).catch(()=>{
+        setMusicUI(false);
+        showToast('Şarkı dosyası henüz yüklenmedi. Birkaç saniye sonra notaya dokun.');
+      });
+    }
   }
 
   function stopMusic(){
-    youtubePlayer.src='about:blank';
-    musicPlaying=false;
-    musicBtn.classList.remove('active');
-    musicBtn.textContent='♪';
-    musicBtn.setAttribute('aria-label','Müziği aç');
+    bgMusic.pause();
+    setMusicUI(false);
     showToast('Müzik durduruldu.');
   }
 
@@ -77,6 +86,7 @@
   }
 
   document.getElementById('startBtn').addEventListener('click',e=>{
+    bgMusic.currentTime=0;
     startMusic(false);
     heartBurst(e.clientX||innerWidth/2,e.clientY||innerHeight*.72,12);
     showToast('Hediyen açıldı, şarkımız da başladı ♫');
@@ -150,7 +160,7 @@
     setTimeout(()=>go(6),900);
   });
 
-  document.getElementById('heartRain').addEventListener('click',e=>{
+  document.getElementById('heartRain').addEventListener('click',()=>{
     for(let i=0;i<5;i++) setTimeout(()=>heartBurst(Math.random()*innerWidth, innerHeight*(.65+Math.random()*.25),12),i*140);
     showToast('İyi ki varsın, hayatımın anlamı.');
   });
