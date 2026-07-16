@@ -3,6 +3,10 @@
   const bar = document.getElementById('bar');
   const toast = document.getElementById('toast');
   const app = document.getElementById('app');
+  const musicBtn = document.getElementById('musicBtn');
+  const youtubePlayer = document.getElementById('youtubePlayer');
+  const MUSIC_URL = 'https://www.youtube.com/embed/mGUjVbsYG6E?autoplay=1&loop=1&playlist=mGUjVbsYG6E&controls=0&disablekb=1&playsinline=1&modestbranding=1&rel=0';
+  let musicPlaying = false;
   let step = 0;
 
   function seedStars(){
@@ -25,6 +29,25 @@
     toast.classList.add('show');
     clearTimeout(showToast.t);
     showToast.t=setTimeout(()=>toast.classList.remove('show'),2200);
+  }
+
+  function startMusic(showMessage=true){
+    if(musicPlaying) return;
+    youtubePlayer.src=MUSIC_URL;
+    musicPlaying=true;
+    musicBtn.classList.add('active');
+    musicBtn.textContent='♫';
+    musicBtn.setAttribute('aria-label','Müziği kapat');
+    if(showMessage) showToast('No. 1 Party Anthem başladı ♫');
+  }
+
+  function stopMusic(){
+    youtubePlayer.src='about:blank';
+    musicPlaying=false;
+    musicBtn.classList.remove('active');
+    musicBtn.textContent='♪';
+    musicBtn.setAttribute('aria-label','Müziği aç');
+    showToast('Müzik durduruldu.');
   }
 
   function go(n){
@@ -54,8 +77,15 @@
   }
 
   document.getElementById('startBtn').addEventListener('click',e=>{
+    startMusic(false);
     heartBurst(e.clientX||innerWidth/2,e.clientY||innerHeight*.72,12);
+    showToast('Hediyen açıldı, şarkımız da başladı ♫');
     setTimeout(()=>go(1),280);
+  });
+
+  musicBtn.addEventListener('click',()=>{
+    if(musicPlaying) stopMusic();
+    else startMusic(true);
   });
 
   document.querySelectorAll('.quiz').forEach((quiz,idx)=>{
@@ -123,20 +153,6 @@
   document.getElementById('heartRain').addEventListener('click',e=>{
     for(let i=0;i<5;i++) setTimeout(()=>heartBurst(Math.random()*innerWidth, innerHeight*(.65+Math.random()*.25),12),i*140);
     showToast('İyi ki varsın, hayatımın anlamı.');
-  });
-
-  const musicBtn=document.getElementById('musicBtn');
-  let musicTried=false;
-  musicBtn.addEventListener('click',()=>{
-    if(!musicTried){
-      musicTried=true;
-      musicBtn.classList.add('active');
-      musicBtn.textContent='♫';
-      showToast('No. 1 Party Anthem yeni sekmede açılıyor…');
-      setTimeout(()=>window.open('https://www.youtube.com/results?search_query=Arctic+Monkeys+No.+1+Party+Anthem','_blank','noopener'),450);
-    }else{
-      showToast('Şarkı diğer sekmede açık olmalı 🎵');
-    }
   });
 
   Promise.all(['image-1.txt','image-2.txt','image-3.txt','image-4.txt'].map(file=>fetch(file).then(r=>r.text())))
