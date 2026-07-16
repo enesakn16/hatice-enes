@@ -7,6 +7,9 @@
   <meta name="description" content="Hatice için Enes'ten küçük bir sürpriz." />
   <title>Hatice'ye — Enes'ten</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    #youtubePlayer{position:fixed;width:200px;height:113px;left:0;bottom:0;opacity:.001;pointer-events:none;z-index:-1}
+  </style>
 </head>
 <body>
 <div class="app" id="app">
@@ -14,15 +17,15 @@
   <div class="stars" id="stars"></div>
   <div class="topbar">
     <div class="progress"><i id="bar"></i></div>
-    <button class="music-btn" id="musicBtn" aria-label="Müzik">♪</button>
+    <button class="music-btn" id="musicBtn" aria-label="Müziği aç veya kapat">♪</button>
   </div>
 
   <section class="screen active" data-step="0">
     <div class="card intro">
       <div class="intro-mark">♥</div>
-      <div class="eyebrow">Sadece bir kişi için</div>
-      <h1>Hatice,<br>burada mısın?</h1>
-      <p class="lead">Bu sayfa rastgele birine açılmadı. Enes’in hayatını renklendiren kadına hazırlandı.</p>
+      <div class="eyebrow">Hatice, benim güzel kadınım.</div>
+      <h1>Bu küçük hediye,<br>sadece senin.</h1>
+      <p class="lead">Belki küçük bir şey; ama hayatımı siyah beyazdan rengârenk hâle getirdiğin için hazırladım. Başlarken sesini biraz aç, bebişim.</p>
       <button class="primary" id="startBtn">Evet, benim ✨</button>
       <small>Yaklaşık 2 dakika. Ama etkisi biraz daha uzun.</small>
     </div>
@@ -118,13 +121,13 @@
         </div>
         <div class="signature">— Seni çok seven adamın, Enes</div>
         <button class="primary" id="heartRain">Kalbime bir kez daha dokun ♥</button>
-        <a class="mini-link" href="https://www.youtube.com/results?search_query=Arctic+Monkeys+No.+1+Party+Anthem" target="_blank" rel="noopener">Bu ana eşlik eden şarkı: No. 1 Party Anthem ↗</a>
+        <a class="mini-link" href="https://www.youtube.com/watch?v=mGUjVbsYG6E" target="_blank" rel="noopener">Bu ana eşlik eden şarkı: No. 1 Party Anthem ↗</a>
       </div>
     </div>
   </section>
 
   <div class="toast" id="toast"></div>
-  <iframe id="youtubePlayer" title="Müzik" allow="autoplay"></iframe>
+  <iframe id="youtubePlayer" title="No. 1 Party Anthem" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 </div>
 <script src="script.js"></script>
 </body>
