@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07070a" />
+  <meta name="description" content="Hatice için Enes'ten küçük bir sürpriz." />
+  <title>Hatice'ye — Enes'ten</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app" id="app">
+  <div class="noise"></div>
+  <div class="stars" id="stars"></div>
+  <div class="topbar">
+    <div class="progress"><i id="bar"></i></div>
+    <button class="music-btn" id="musicBtn" aria-label="Müzik">♪</button>
+  </div>
+
+  <section class="screen active" data-step="0">
+    <div class="card intro">
+      <div class="intro-mark">♥</div>
+      <div class="eyebrow">Sadece bir kişi için</div>
+      <h1>Hatice,<br>burada mısın?</h1>
+      <p class="lead">Bu sayfa rastgele birine açılmadı. Enes’in hayatını renklendiren kadına hazırlandı.</p>
+      <button class="primary" id="startBtn">Evet, benim ✨</button>
+      <small>Yaklaşık 2 dakika. Ama etkisi biraz daha uzun.</small>
+    </div>
+  </section>
+
+  <section class="screen" data-step="1">
+    <div class="card quiz" data-correct="2">
+      <div class="question-number"><span>Mini test</span><span>1 / 3</span></div>
+      <h2>En güzel buluşma yeri neresi?</h2>
+      <p class="soft">Bu soruda pahalı uçak bileti yok. Mantıklı düşün Hatice Hanım.</p>
+      <div class="answers">
+        <button class="answer">Paris’te, Eyfel’in tepesinde</button>
+        <button class="answer">Sessiz bir sahilde, gün batımında</button>
+        <button class="answer">Birbirimizin yanı</button>
+        <button class="answer">Enes’in evinde, yemek hazırsa</button>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+  <section class="screen" data-step="2">
+    <div class="card quiz" data-correct="1">
+      <div class="question-number"><span>Mini test</span><span>2 / 3</span></div>
+      <h2>Enes neden senin “bıdı bıdı” yapmana bayılıyor?</h2>
+      <p class="soft">Cevabı teknik olarak ölçemedik ama kalpten doğruladık.</p>
+      <div class="answers">
+        <button class="answer">Sessizlikten korktuğu için</button>
+        <button class="answer">Sesin ve konuşman ona iyi geldiği için</button>
+        <button class="answer">Konuşurken uyuyabildiği için</button>
+        <button class="answer">Sadece haklıymış gibi görünmek için</button>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+  <section class="screen" data-step="3">
+    <div class="card quiz" data-correct="0">
+      <div class="question-number"><span>Son soru</span><span>3 / 3</span></div>
+      <h2>“Benim adamım” dediğin Enes hangisi?</h2>
+      <p class="soft">Birden fazla doğru gibi görünebilir. Ama biri tam paket.</p>
+      <div class="answers">
+        <button class="answer">Soğukkanlı, sert; içten içe tam bir ev ve aile adamı</button>
+        <button class="answer">Sadece romantik mesaj yazan gizemli biri</button>
+        <button class="answer">Sürekli gezen, eve uğramayan bir maceraperest</button>
+        <button class="answer">Kriminal dinleyip ortadan kaybolan biri</button>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+  <section class="screen" data-step="4">
+    <div class="card">
+      <div class="eyebrow">Dört küçük sebep</div>
+      <h2>Sende neyi seviyorum?</h2>
+      <p class="soft">Kutulara tek tek dokun. Hepsini açmadan devam yok.</p>
+      <div class="reveal-grid">
+        <button class="reveal"><div class="icon">☀️</div><b>Neşeni</b><span>Siyah beyaz günlerime renk kattığın için.</span></button>
+        <button class="reveal"><div class="icon">♥</div><b>Kalbini</b><span>Sevgini saklamadan, içten içe hissettirdiğin için.</span></button>
+        <button class="reveal"><div class="icon">✦</div><b>Aklını</b><span>Her konuda mantıklı ve gerçek düşündüğün için.</span></button>
+        <button class="reveal"><div class="icon">⌂</div><b>Gerçekliğini</b><span>Bu garip nesilde hâlâ gerçek bir kadın olduğun için.</span></button>
+      </div>
+      <button class="primary" id="revealNext" disabled style="opacity:.42">Hepsini okudum</button>
+    </div>
+  </section>
+
+  <section class="screen" data-step="5">
+    <div class="card">
+      <div class="eyebrow">Sistem son bir bilgi istiyor</div>
+      <h2>Enes’i ne kadar seviyorsun?</h2>
+      <p class="lead">Cevabın kayıt altına alınacak. İtiraz süresi: hiç.</p>
+      <div class="choice-row">
+        <button class="choice little" id="littleBtn">Biraz seviyorum</button>
+        <button class="choice much" id="muchBtn">Çok seviyorum</button>
+      </div>
+      <div class="warning-box" id="warningBox"></div>
+    </div>
+  </section>
+
+  <section class="screen" data-step="6">
+    <div class="card final-card" id="finalCard">
+      <div class="portrait"><img id="haticePhoto" alt="Hatice"></div>
+      <div class="final-copy">
+        <div class="eyebrow">Enes’ten Hatice’ye</div>
+        <h2>Canımın içi…</h2>
+        <div class="letter">
+          Seni seviyorum; çünkü beni gerçekten anlıyorsun. Konuşman bile bana iyi geliyor, o bıdı bıdın içimde bir yeri ev gibi yapıyor.
+          <br><br>
+          Neşene, kalbine ve düşüncelerine hayranım. Sevgini bu kadar içten göstermen, her şeye mantıklı bakman ve bu saçma zamanda hâlâ gerçek bir kadın olman… Seni benim için bambaşka yapıyor.
+          <br><br>
+          Hayatım siyah beyazken sen geldin ve her şeyi renklendirdin. Hiçbir amacım yokken kendini benim en güzel amacıma çevirdin.
+          <br><br>
+          Daha yan yana gelemedik belki; ama ben seni geleceğimde görüyorum. Mutlu bir yuvada, güzel bebişlerimizle, hayatın her hâlinde omuz omuza. Seni ömür boyu mutlu edeceğim. Sen de beni. Hayatımız beraber geçecek, kadınım.
+        </div>
+        <div class="signature">— Seni çok seven adamın, Enes</div>
+        <button class="primary" id="heartRain">Kalbime bir kez daha dokun ♥</button>
+        <a class="mini-link" href="https://www.youtube.com/results?search_query=Arctic+Monkeys+No.+1+Party+Anthem" target="_blank" rel="noopener">Bu ana eşlik eden şarkı: No. 1 Party Anthem ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="toast" id="toast"></div>
+  <iframe id="youtubePlayer" title="Müzik" allow="autoplay"></iframe>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
