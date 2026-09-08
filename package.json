@@ -1,0 +1,13 @@
+{
+  "name": "hatice-enes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hatice için hazırlanmış statik romantik deneyim.",
+  "scripts": {
+    "validate": "node tools/validate-static-site.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
